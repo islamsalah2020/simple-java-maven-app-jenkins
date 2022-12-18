@@ -9,7 +9,7 @@ pipeline {
         registry = "islamsalah2020/simple-java-maven-app"
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
-        registryCredential = "dckr_pat_SSJL-AB7LXSfcEmNqptqD6CB0Z0"
+        registryCredential = ""
     }
     
     stages {
@@ -53,11 +53,9 @@ pipeline {
         stage('Pushing Docker Image to Dockerhub') {
             steps {
                 script { 
-                    sh "echo $registryCredential"
-                    sh " docker login docker.io -u islamsalah2020 -p $registryCredential  "
-                     sh "echo login succeeded"
-                        
-                        sh "docker push islamsalah2020/simple-java-maven-app:${TAG}"    
+                    docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }  
                     
                 
             }
