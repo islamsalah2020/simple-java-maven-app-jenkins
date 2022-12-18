@@ -9,7 +9,7 @@ pipeline {
         registry = "islamsalah2020/simple-java-maven-app"
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
-        registryCredential = 'docker-hub'
+        registryCredential = credentials('docker-hub')
     }
     
     stages {
