@@ -8,7 +8,7 @@ pipeline {
     environment {
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
-        token = "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"
+        token = "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"
     }
     
     stages {
