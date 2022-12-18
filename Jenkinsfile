@@ -6,9 +6,10 @@ pipeline {
     }
     }
     environment {
+        registry = "islamsalah2020/simple-java-maven-app"
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
-        token = jenkins
+        registryCredential = 'docker-hub'
     }
     
     stages {
@@ -52,10 +53,8 @@ pipeline {
         stage('Pushing Docker Image to Dockerhub') {
             steps {
                 script {
-                    sh "echo $token"
-                    sh " echo $token | docker login ghcr.io -u islamsalah2020 --password-stdin  "
-                     sh "echo login success"
-                    sh "docker push ghcr.io/islamsalah2020/simple-java-maven-app:latest"
+                    docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
                     
                 }
             }
