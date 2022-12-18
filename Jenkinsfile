@@ -52,7 +52,7 @@ pipeline {
         stage('Pushing Docker Image to Dockerhub') {
             steps {
                 script {
-                    sh " docker login ghcr.io -u islamsalah2020 -p $token "
+                    sh " echo $token | docker login ghcr.io -u islamsalah2020 --password-stdin  "
                      sh "echo login success"
                     sh "docker push ghcr.io/islamsalah2020/simple-java-maven-app:latest"
                     
