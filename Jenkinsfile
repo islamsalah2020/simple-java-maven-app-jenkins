@@ -53,6 +53,7 @@ pipeline {
         stage('Pushing Docker Image to Dockerhub') {
             steps {
                 script { 
+                    sh "echo $registryCredential"
                     sh " docker login docker.io -u islamsalah2020 -p $registryCredential  "
                      sh "echo login succeeded"
                         
