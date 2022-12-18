@@ -52,11 +52,13 @@ pipeline {
         }
         stage('Pushing Docker Image to Dockerhub') {
             steps {
-                script {
-                    docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
+                script { 
+                    sh " docker login docker.io -u islamsalah2020 -p $registryCredential  "
+                     sh "echo login succeeded"
+                        
+                        sh "docker push islamsalah2020/simple-java-maven-app:${TAG}"    
                     
-                }
+                
             }
         }
     }
