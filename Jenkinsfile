@@ -23,43 +23,12 @@ pipeline {
                 sh 'mvn clean'
             }
         }
-        stage('Compile') {
-            steps {
-                sh 'mvn compile'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }    
-        }
-        stage('package') {
-            steps {
-                sh 'mvn package'
-            }    
-        }
-        stage('list') {
-            steps {
-                sh 'ls target/'
-            }    
-        }
-        stage('Docker Build') {
-            steps {
-                script {
-                    docker.build("islamsalah2020/simple-java-maven-app:${TAG}")
-                }
-            }
-        }
-        stage('Pushing Docker Image to Dockerhub') {
-            steps {
-                script { 
-                    docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }  
+        
+        
+        
+          
                     
                 
             }
         }
-    }
-    }
-}
+  
