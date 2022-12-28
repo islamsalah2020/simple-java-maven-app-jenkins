@@ -23,6 +23,15 @@ pipeline {
                 sh 'mvn clean'
             }
         }
+        stage('docker-cs') {
+            agent {
+                docker {  image 'docker' }
+            }
+                steps{
+                    sh 'docker ps'
+                }
+        }
+            
         
         
         
