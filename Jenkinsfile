@@ -45,14 +45,13 @@ pipeline {
         }
         stage('Docker Build image') {
             agent {
-                docker {  image 'docker:20.10.22' }
+                docker {  image 'docker' }
             }
-            // 52.14.252.133:8081
+           
             steps {
                 script {
                 docker ps
-                docker build -t simple-java-maven-app/sample_image .
-                docker images
+               
                 }
             }
         }
