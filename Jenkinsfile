@@ -48,7 +48,8 @@ pipeline {
             agent {
                 docker {  image 'docker:latest' 
                            reuseNode true
-                           args '-v /var/run/docker.sock:/var/run/docker.sock'  }
+                           args '-v /var/run/docker.sock:/var/run/docker.sock' 
+                           args '-v /home/cloud_user/.docker/config.json:.docker/config.json'}
             }
            
             steps {
