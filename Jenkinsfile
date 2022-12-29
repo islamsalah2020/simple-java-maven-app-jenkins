@@ -49,10 +49,10 @@ pipeline {
             }
            
             steps {
-                script {
-                docker ps
+                
+                sh 'docker ps'
                
-                }
+                
             }
         }
         
