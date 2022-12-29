@@ -51,7 +51,7 @@ pipeline {
             steps {
                 script {
                 docker ps
-                docker build -t simple-java-maven-app/sample_image:latest .
+                docker build -t simple-java-maven-app/sample_image .
                 docker images
                 }
             }
