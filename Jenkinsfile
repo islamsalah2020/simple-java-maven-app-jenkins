@@ -46,7 +46,7 @@ pipeline {
         }
         stage('Docker Build image') {
             agent {
-                docker {  image 'docker' 
+                docker {  image 'docker:latest' 
                            reuseNode true }
             }
            
@@ -58,7 +58,7 @@ pipeline {
                 sh 'chmod 777 .docker/'
                 withCredentials([usernamePassword(credentialsId: 'token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 sh 'echo $USERNAME'
-                sh 'echo $PASSWORD | sudo docker login ghcr.io -u $USERNAME --password-stdin '}
+                sh 'echo $PASSWORD | docker login ghcr.io -u $USERNAME --password-stdin '}
                 // sh 'docker push simple-java-maven-app/sample-image '
                 // sh 'echo $nexus_creds'
                 // sh 'docker login -u admin -p admin123 http://52.14.252.133:9001/repository/sample-repo/'
