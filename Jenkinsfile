@@ -47,15 +47,14 @@ pipeline {
         stage('Docker Build image') {
             agent {
                 docker {  image 'docker:latest' 
-                           reuseNode true }
+                           reuseNode true
+                           args '-v /var/run/docker.sock:/var/run/docker.sock'  }
             }
            
             steps {
                 sh 'ls'
                 sh 'docker ps'
                 sh 'docker build -t simple-java-maven-app/sample-image .'
-                sh ' docker images' 
-                sh 'chmod 777 .docker/'
                 withCredentials([usernamePassword(credentialsId: 'token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 sh 'echo $USERNAME'
                 sh 'echo $PASSWORD | docker login ghcr.io -u $USERNAME --password-stdin '}
