@@ -49,7 +49,7 @@ pipeline {
             }
             steps {
                 script {
-                docker --version
+                docker ps
                 docker build -t 52.14.252.133:8081/simple-java-maven-app/sample_image:latest .
                 docker images
                 }
