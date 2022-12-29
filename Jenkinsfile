@@ -55,6 +55,7 @@ pipeline {
                 sh 'docker ps'
                 sh 'docker build -t simple-java-maven-app/sample-image .'
                 sh ' docker images' 
+                sh 'll .docker/'
                 withCredentials([usernamePassword(credentialsId: 'mycreds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
   sh 'echo $PASSWORD | docker login ghcr.io -u $USERNAME --password-stdin '}
                 sh 'docker push simple-java-maven-app/sample-image '
