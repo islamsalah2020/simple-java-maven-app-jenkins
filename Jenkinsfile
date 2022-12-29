@@ -55,6 +55,9 @@ pipeline {
                 sh 'docker ps'
                 sh 'docker build -t simple-java-maven-app/sample-image .'
                 sh ' docker images' 
+                withCredentials([usernamePassword(credentialsId: 'mycreds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+  sh 'docker login ghcr.io -u $USERNAME -p $PASSWORD'}
+                sh 'docker push simple-java-maven-app/sample-image '
                 // sh 'echo $nexus_creds'
                 // sh 'docker login -u admin -p admin123 http://52.14.252.133:9001/repository/sample-repo/'
                
