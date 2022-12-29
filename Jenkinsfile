@@ -10,7 +10,7 @@ pipeline {
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
         
-        nexus-creds = 'jenkins-nexus-creds'
+        nexus_creds = 'jenkins-nexus-creds'
     }
     
     stages {
@@ -55,7 +55,8 @@ pipeline {
                 sh 'docker ps'
                 sh 'docker build -t simple-java-maven-app/sample-image .'
                 sh ' docker images' 
-                sh 'docker login -u admin -p $nexus-creds http://52.14.252.133:8081'
+                sh 'echo $nexus_creds'
+                sh 'docker login -u admin -p $nexus_creds http://52.14.252.133:8081'
                
                 
             }
