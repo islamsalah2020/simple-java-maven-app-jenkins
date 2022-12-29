@@ -51,6 +51,7 @@ pipeline {
             steps {
                 
                 sh 'docker ps'
+                sh 'docker build -t simple-java-maven-app/sample-image .'
                
                 
             }
