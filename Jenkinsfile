@@ -6,7 +6,7 @@ pipeline {
     }
     }
     environment {
-        registry = "islamsalah2020/simple-java-maven-app"
+        registry = "islamsalah2020/simple-java-maven-app-jenkins"
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
         
@@ -55,11 +55,11 @@ pipeline {
             steps {
                 sh 'ls'
                 sh 'docker ps'
-                sh 'docker build -t ghcr.io/islamsalah2020/simple-java-maven-app/sample-image .'
+                sh 'docker build -t ghcr.io/islamsalah2020/simple-java-maven-app-jenkins/sample-image .'
                 withCredentials([usernamePassword(credentialsId: 'token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 sh 'echo $USERNAME'
                 sh 'echo $PASSWORD | docker login ghcr.io -u $USERNAME --password-stdin '}
-                sh 'docker push ghcr.io/islamsalah2020/simple-java-maven-app/sample-image '
+                sh 'docker push ghcr.io/islamsalah2020/simple-java-maven-app-jenkins/sample-image '
                 // sh 'echo $nexus_creds'
                 // sh 'docker login -u admin -p admin123 http://52.14.252.133:9001/repository/sample-repo/'
                
