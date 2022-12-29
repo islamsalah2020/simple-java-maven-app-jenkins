@@ -53,6 +53,7 @@ pipeline {
                 sh 'ls'
                 sh 'docker ps'
                 sh 'docker build -t simple-java-maven-app/sample-image .'
+                sh ' docker images' 
                
                 
             }
