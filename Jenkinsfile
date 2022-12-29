@@ -45,7 +45,7 @@ pipeline {
         }
         stage('Docker Build image') {
             agent {
-                docker {  image 'docker' }
+                docker {  image 'docker:20.10.22' }
             }
             // 52.14.252.133:8081
             steps {
