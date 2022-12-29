@@ -56,9 +56,10 @@ pipeline {
                 sh 'docker build -t simple-java-maven-app/sample-image .'
                 sh ' docker images' 
                 sh 'chmod 777 .docker/'
-                withCredentials([usernamePassword(credentialsId: 'mycreds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-  sh 'echo $PASSWORD | docker login ghcr.io -u $USERNAME --password-stdin '}
-                sh 'docker push simple-java-maven-app/sample-image '
+                withCredentials([usernamePassword(credentialsId: 'token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                sh 'echo $USERNAME'
+                sh 'echo $PASSWORD | docker login ghcr.io -u $USERNAME --password-stdin '}
+                // sh 'docker push simple-java-maven-app/sample-image '
                 // sh 'echo $nexus_creds'
                 // sh 'docker login -u admin -p admin123 http://52.14.252.133:9001/repository/sample-repo/'
                
