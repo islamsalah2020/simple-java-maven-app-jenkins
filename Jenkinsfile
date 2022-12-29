@@ -56,7 +56,7 @@ pipeline {
                 sh 'docker build -t simple-java-maven-app/sample-image .'
                 sh ' docker images' 
                 sh 'echo $nexus_creds'
-                sh 'docker login -u admin -p $nexus_creds http://52.14.252.133:8081'
+                sh 'docker login -u admin -p admin123 http://52.14.252.133:8081'
                
                 
             }
