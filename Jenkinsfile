@@ -47,10 +47,11 @@ pipeline {
             agent {
                 docker {  image 'docker' }
             }
+            // 52.14.252.133:8081
             steps {
                 script {
                 docker ps
-                docker build -t 52.14.252.133:8081/simple-java-maven-app/sample_image:latest .
+                docker build -t simple-java-maven-app/sample_image:latest .
                 docker images
                 }
             }
