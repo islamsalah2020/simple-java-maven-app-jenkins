@@ -23,14 +23,40 @@ pipeline {
                 sh 'mvn clean'
             }
         }
-        stage('docker-cs') {
+        stage('Compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }    
+        }
+        stage('package') {
+            steps {
+                sh 'mvn package'
+            }    
+        }
+        stage('list') {
+            steps {
+                sh 'ls target/'
+            }    
+        }
+        stage('Docker Build image') {
             agent {
                 docker {  image 'docker' }
             }
-                steps{
-                    sh 'docker ps'
-                }
+            steps {
+                sh""""
+                docker --version
+                docker build -t 52.14.252.133:8081/simple-java-maven-app/sample_image:latest .
+                docker images
+                """"
+            }
         }
+        
+       
             
         
         
