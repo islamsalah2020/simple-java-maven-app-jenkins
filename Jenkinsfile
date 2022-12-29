@@ -48,11 +48,11 @@ pipeline {
                 docker {  image 'docker' }
             }
             steps {
-                sh """"
+                script {
                 docker --version
                 docker build -t 52.14.252.133:8081/simple-java-maven-app/sample_image:latest .
                 docker images
-                """"
+                }
             }
         }
         
