@@ -45,11 +45,12 @@ pipeline {
         }
         stage('Docker Build image') {
             agent {
-                docker {  image 'docker' }
+                docker {  image 'docker' 
+                           reuseNode true }
             }
            
             steps {
-                
+                sh 'ls'
                 sh 'docker ps'
                 sh 'docker build -t simple-java-maven-app/sample-image .'
                
