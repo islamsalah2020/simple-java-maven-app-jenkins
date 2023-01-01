@@ -24,7 +24,7 @@ public class App
         return message;
     }
     
-     private final String sleep_method() {
+     private final String sleep_Method() {
         try {  
         for (int j = 0; j < 5; j++)  
         {  
