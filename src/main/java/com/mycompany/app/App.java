@@ -11,7 +11,7 @@ public class App
     public App() {}
 
     public static void main(String[] args) {
-        wait(1000);
+      
         System.out.println(new App().getMessage());
     }
     
