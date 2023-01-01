@@ -55,14 +55,13 @@ pipeline {
             steps {
                 sh 'ls'
                 sh 'docker ps'
-                sh 'docker build -t ghcr.io/islamsalah2020/simple-java-maven-app-jenkins/sample-image .'
-                withCredentials([usernamePassword(credentialsId: 'token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                sh 'echo $USERNAME'
-                sh 'echo $PASSWORD | docker login ghcr.io -u $USERNAME --password-stdin '}
-                sh 'docker push ghcr.io/islamsalah2020/simple-java-maven-app-jenkins/sample-image '
-                // sh 'echo $nexus_creds'
-                // sh 'docker login -u admin -p admin123 http://52.14.252.133:9001/repository/sample-repo/'
-               
+                // sh 'docker build -t ghcr.io/islamsalah2020/simple-java-maven-app-jenkins/sample-image .'
+                sh 'docker build -t 172.31.17.39:9001/sample-image .'
+                withCredentials([usernamePassword(credentialsId: 'nexus-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                sh 'echo $PASSWORD | docker login ghcr.io -u $USERNAME --password-stdin 172.31.17.39:9001 '}
+                // sh 'docker push ghcr.io/islamsalah2020/simple-java-maven-app-jenkins/sample-image '
+                sh 'docker push 172.31.17.39:9001/sample-image '
+                
                 
             }
         }
