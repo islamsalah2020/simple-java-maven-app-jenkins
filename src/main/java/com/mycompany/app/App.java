@@ -19,7 +19,7 @@ public class App
     
     private final String getMessage() {
         for ( let counter = 1; counter <= 1000; counter++ ) {
-        System.out.println(The number is ${counter}); 
+       console.log(`The number is ${counter}`); 
         }
         return message;
     }
