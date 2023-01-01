@@ -13,18 +13,13 @@ public class App
     public App() {}
 
     public static void main(String[] args) {
-        System.out.println(new App().sleep_Method());
+        
         System.out.println(new App().getMessage());
     }
     
     
     
     private final String getMessage() {
-        
-        return message;
-    }
-    
-     private final String sleep_Method() {
         try {  
         for (int j = 0; j < 5; j++)  
         {  
@@ -41,8 +36,10 @@ public class App
         {  
         // catching the exception  
         System.out.println(expn);  
-        }  
-        
+        }
+        return message;
     }
+    
+    
 
 }
