@@ -1,4 +1,6 @@
 package com.mycompany.app;
+import java.lang.Thread;  
+import java.io.*;  
 
 /**
  * Hello world!
@@ -11,17 +13,36 @@ public class App
     public App() {}
 
     public static void main(String[] args) {
-      
+        System.out.println(new App().sleep_Method());
         System.out.println(new App().getMessage());
     }
     
     
     
     private final String getMessage() {
-        for ( let counter = 1; counter <= 1000; counter++ ) {
-       console.log(`The number is ${counter}`); 
-        }
+        
         return message;
+    }
+    
+     private final String sleep_method() {
+        try {  
+        for (int j = 0; j < 5; j++)  
+        {  
+  
+        // The main thread sleeps for the 1000 milliseconds, which is 1 sec  
+        // whenever the loop runs  
+        Thread.sleep(100);  
+  
+        // displaying the value of the variable  
+        System.out.println(j);  
+        }  
+        }  
+        catch (Exception expn)   
+        {  
+        // catching the exception  
+        System.out.println(expn);  
+        }  
+        
     }
 
 }
