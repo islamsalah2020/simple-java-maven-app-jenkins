@@ -29,7 +29,7 @@ public class App
         Thread.sleep(100);  
   
         // displaying the value of the variable  
-        System.out.println(j);  
+        System.out.println("Hello World!");  
         }  
         }  
         catch (Exception expn)   
