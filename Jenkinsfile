@@ -27,7 +27,7 @@ pipeline {
            
             steps {
                 
-                sh 'CONTAINER_ID=`docker ps | grep $IMAGE | cut -c 1-12` '
+                sh 'CONTAINER_ID=`docker ps -a | grep $IMAGE | cut -c 1-12` '
                 sh 'echo $CONTAINER_ID'
                 sh 'docker stop $'
                 sh 'docker rm $CONTAINER_ID'
