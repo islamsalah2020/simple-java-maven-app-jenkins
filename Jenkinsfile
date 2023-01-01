@@ -9,6 +9,7 @@ pipeline {
         registry = "islamsalah2020/simple-java-maven-app-jenkins"
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
+        IMAGE = "sample-image"
         
         nexus_creds = 'jenkins-nexus-creds'
     }
@@ -55,19 +56,43 @@ pipeline {
             steps {
                 sh 'ls'
                 sh 'docker ps'
-                // sh 'docker build -t ghcr.io/islamsalah2020/simple-java-maven-app-jenkins/sample-image .'
-                sh 'docker build -t 172.31.17.39:9001/sample-image:latest -t 172.31.17.39:9001/sample-image:$TAG .'
-                // sh 'docker tag 172.31.17.39:9001/sample-image:latest 172.31.17.39:9001/sample-image:$TAG'
+                // sh 'docker build -t ghcr.io/islamsalah2020/simple-java-maven-app-jenkins/$IMAGE .'
+                sh 'docker build -t 172.31.17.39:9001/$IMAGE:latest -t 172.31.17.39:9001/$IMAGE:$TAG .'
+                // sh 'docker tag 172.31.17.39:9001/$IMAGE:latest 172.31.17.39:9001/$IMAGE:$TAG'
                 withCredentials([usernamePassword(credentialsId: 'nexus-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 // sh 'echo $PASSWORD | docker login ghcr.io -u $USERNAME --password-stdin '
                 sh 'echo $PASSWORD | docker login 172.31.17.39:9001 -u $USERNAME --password-stdin ' }
-                // sh 'docker push ghcr.io/islamsalah2020/simple-java-maven-app-jenkins/sample-image'
-                sh 'docker push 172.31.17.39:9001/sample-image:$TAG '
+                // sh 'docker push ghcr.io/islamsalah2020/simple-java-maven-app-jenkins/$IMAGE'
+                sh 'docker push 172.31.17.39:9001/$IMAGE:$TAG '
                 
                 
             }
         }
         
+        stage('Docker deploy image') {
+            agent {
+                docker {  image 'docker:latest' 
+                           reuseNode true
+                           args '-v /var/run/docker.sock:/var/run/docker.sock' 
+                           args '-v /home/cloud_user/.docker/:/.docker/'}
+            }
+           
+            steps {
+                
+                sh 'CONTAINER_ID=`docker ps | grep $IMAGE | cut -c 1-12` '
+                sh 'docker stop $CONTAINER_ID'
+                sh 'docker rm $CONTAINER_ID'
+                withCredentials([usernamePassword(credentialsId: 'nexus-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+               
+                sh 'echo $PASSWORD | docker login 172.31.17.39:9001 -u $USERNAME --password-stdin ' }
+               
+                sh 'docker pull 172.31.17.39:9001/$IMAGE:$TAG '
+                sh 'docker run 172.31.17.39:9001/$IMAGE:$TAG '
+                
+                
+                
+            }
+        }
        
             
         
