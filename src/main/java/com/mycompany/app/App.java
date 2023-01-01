@@ -15,20 +15,12 @@ public class App
         System.out.println(new App().getMessage());
     }
     
-    public static void wait(int ms)
-    {
-    try
-    {
-        Thread.sleep(ms);
-    }
-    catch(InterruptedException ex)
-    {
-        Thread.currentThread().interrupt();
-    }
-    }
+    
     
     private final String getMessage() {
-
+        for ( let counter = 1; counter <= 1000; counter++ ) {
+        System.out.println(`The number is ${counter}`); 
+        }
         return message;
     }
 
