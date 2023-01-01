@@ -11,15 +11,24 @@ public class App
     public App() {}
 
     public static void main(String[] args) {
+        wait(1000);
         System.out.println(new App().getMessage());
     }
-
+    
+    public static void wait(int ms)
+    {
+    try
+    {
+        Thread.sleep(ms);
+    }
+    catch(InterruptedException ex)
+    {
+        Thread.currentThread().interrupt();
+    }
+    }
+    
     private final String getMessage() {
-         try {
-            Thread.sleep(1000);
-         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-         }
+
         return message;
     }
 
