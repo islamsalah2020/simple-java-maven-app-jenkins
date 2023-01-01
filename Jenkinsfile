@@ -58,8 +58,9 @@ pipeline {
                 // sh 'docker build -t ghcr.io/islamsalah2020/simple-java-maven-app-jenkins/sample-image .'
                 sh 'docker build -t 172.31.17.39:9001/sample-image .'
                 withCredentials([usernamePassword(credentialsId: 'nexus-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                sh 'echo $PASSWORD | docker login ghcr.io -u $USERNAME --password-stdin 172.31.17.39:9001 '}
-                // sh 'docker push ghcr.io/islamsalah2020/simple-java-maven-app-jenkins/sample-image '
+                // sh 'echo $PASSWORD | docker login ghcr.io -u $USERNAME --password-stdin '
+                sh 'echo $PASSWORD | docker login 172.31.17.39:9001 -u $USERNAME --password-stdin ' }
+                // sh 'docker push ghcr.io/islamsalah2020/simple-java-maven-app-jenkins/sample-image'
                 sh 'docker push 172.31.17.39:9001/sample-image '
                 
                 
