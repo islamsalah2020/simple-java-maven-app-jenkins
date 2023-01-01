@@ -15,6 +15,11 @@ public class App
     }
 
     private final String getMessage() {
+         try {
+            Thread.sleep(1000);
+         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+         }
         return message;
     }
 
