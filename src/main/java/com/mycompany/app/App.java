@@ -29,13 +29,13 @@ public class App
         Thread.sleep(100);  
   
         // displaying the value of the variable  
-        System.out.println("Hello World!");  
+        // System.out.println("Hello World!");  
         }  
         }  
         catch (Exception expn)   
         {  
         // catching the exception  
-        System.out.println(expn);  
+        // System.out.println(expn);  
         }
         return message;
     }
