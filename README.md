@@ -11,6 +11,7 @@ Building CICD pipeline for Simple Java App using Jenkins.
 - Push COntainer Image to Container Registery.
 - Deploy Container Image to Target environment.
 
-### specific agents used in each stage
-### Jenkins running on docker Image
-### agent run ephemeral dockr image for the Job build
+## Notes:
+- specific agents used in each stage
+- Jenkins running on docker Image
+- agent run ephemeral dockr image for the Job build
