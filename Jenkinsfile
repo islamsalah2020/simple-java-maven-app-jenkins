@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                    
-                    sh 'maven clean'
+                    sh 'mvn clean'
                     git 'https://github.com/islamsalah2020/simple-java-maven-app-jenkins.git';
                 }
             }
