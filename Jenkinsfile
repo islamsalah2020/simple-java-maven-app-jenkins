@@ -17,8 +17,7 @@ pipeline {
         stage("Clone code from VCS") {
             steps {
                 script {
-                    sh "ls ~/.m2/"
-                    sh "cat /root/.m2/settings.xml"
+                   
                     sh 'maven clean'
                     git 'https://github.com/islamsalah2020/simple-java-maven-app-jenkins.git';
                 }
