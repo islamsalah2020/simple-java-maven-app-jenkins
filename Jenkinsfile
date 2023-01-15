@@ -17,9 +17,9 @@ pipeline {
         stage("Clone code from VCS") {
             steps {
                 script {
-                   
-                    sh 'mvn clean'
-                    git 'https://github.com/islamsalah2020/simple-java-maven-app-jenkins.git';
+                   sh ' echo "hello" '
+                    // sh 'mvn clean'
+                    // git 'https://github.com/islamsalah2020/simple-java-maven-app-jenkins.git';
                 }
             }
         }
