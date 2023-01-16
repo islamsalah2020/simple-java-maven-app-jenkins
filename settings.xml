@@ -118,16 +118,12 @@ under the License.
      |
       -->
     <server>
-      <id>releases</id>
+      <id>maven-nexus-repo</id>
       <username>admin</username>
       <password>admin123</password>
     </server>
 
-    <server>
-      <id>snapshots</id>
-      <username>admin</username>
-      <password>admin123</password>
-    </server>
+    
    
 
     <!-- Another sample, using keys to authenticate.
