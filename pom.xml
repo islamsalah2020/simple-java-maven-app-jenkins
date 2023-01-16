@@ -19,12 +19,18 @@
   </dependencies>
 
   <distributionManagement>
-    <repository>
-        <id>maven-nexus-repo</id>
-        <url>http://3.14.142.62:8081/repository/maven-nexus-repo/</url>
-    </repository>
+	<repository>
+		<id>devopsschool</id>
+		<name>Internal Releases</name>
+		<url>http://3.14.142.62:8081/repository/devopsschool-hostes-release/</url>
+	</repository>
+ 
+	<snapshotRepository>
+		<id>devopsschool</id>
+		<name>Internal Releases</name>
+		<url>http://3.14.142.62:8081/repository/devopsschool-hostes-snapshot/</url>
+	</snapshotRepository>
 
-    
 </distributionManagement>
 
   <properties>

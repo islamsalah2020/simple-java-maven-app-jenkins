@@ -123,6 +123,12 @@ under the License.
       <password>admin123</password>
     </server>
 
+    <server>
+	<id>devopsschool</id>
+	<username>deploy-user</username>
+	<password>admin123</password>
+</server>
+
     
    
 
