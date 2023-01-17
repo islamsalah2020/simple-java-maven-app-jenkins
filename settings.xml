@@ -118,14 +118,14 @@ under the License.
      |
       -->
     <server>
-      <id>maven-nexus-repo</id>
-      <username>admin</username>
+      <id>demo-snapshot</id>
+      <username>demo-user</username>
       <password>admin123</password>
     </server>
 
     <server>
-	<id>devopsschool</id>
-	<username>deploy-user</username>
+	<id>demo-release</id>
+	<username>demo-user</username>
 	<password>admin123</password>
 </server>
 
