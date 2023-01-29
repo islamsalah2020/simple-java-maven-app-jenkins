@@ -1,8 +1,8 @@
 pipeline {
     agent {
         docker {
-      image 'docker'
-      args '-v /var/run/docker.sock:/var/run/docker.sock'
+      image 'maven:3.5.4-jdk-8'
+      args '-v /root/.m2:/root/.m2'
     }
     }
    
@@ -17,26 +17,27 @@ pipeline {
     }
     stages {
         
-        stage("Maven Build") {
+        stage('Docker deploy image') {
+            agent {
+                docker {  image 'docker:latest' 
+                           reuseNode true
+                           args '-v /var/run/docker.sock:/var/run/docker.sock' 
+                           args '-v /home/cloud_user/.docker/:/.docker/'}
+            }
+           
             steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'nexus-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh " echo $PASSWORD | docker login 172.31.17.39:9001 -u $USERNAME --password-stdin "
-                    sh "echo hello"
-                    // sh "docker build -t ${REGISTRY}/${REPOSITORY}/${IMAGE}:${TAG} ."
-                    // sh "docker push git.qeema.io:5050/qeema-platform/${IMAGE}:${TAG}"
-                    
                     withCredentials([usernamePassword(credentialsId: 'nexus-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) 
-                    sh 'echo $PASSWORD | docker login 172.31.17.39:9001 -u $USERNAME --password-stdin ' }
+                    sh 'echo $PASSWORD | docker login 172.31.17.39:9001 -u $USERNAME --password-stdin ' 
+                    
                     sh 'docker pull 172.31.17.39:9001/$IMAGE:$TAG '
                     sh 'docker run 172.31.17.39:9001/$IMAGE:$TAG '
                         
-                        sh "docker logout"
+                    sh "docker logout"
                     }
-                }
-            }
-        }
+                } 
+        
+    }   
+}
        
         
-    }
-}
+ 
