@@ -19,8 +19,8 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'nexus-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh " echo $PASSWORD | docker login 3.144.31.33:8081 -u $USERNAME --password-stdin "
-                    
+                    sh " echo $PASSWORD | docker login 3.144.31.33:9001 -u $USERNAME --password-stdin "
+                    sh "echo hello"
                     // sh "docker build -t ${REGISTRY}/${REPOSITORY}/${IMAGE}:${TAG} ."
                     // sh "docker push git.qeema.io:5050/qeema-platform/${IMAGE}:${TAG}"
                     
