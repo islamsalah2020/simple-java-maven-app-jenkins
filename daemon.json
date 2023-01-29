@@ -1,0 +1,7 @@
+{
+    "insecure-registries" : [ "172.31.17.39:9001" ]
+}
+
+// /etc/docker/daemon.json
+// ip of nexus server
+// port of image repo
