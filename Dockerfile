@@ -7,6 +7,7 @@ RUN chmod u+x ./kubectl
 
 RUN curl -fsSL -o get_helm.sh "https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3"
 RUN chmod 700 get_helm.sh
+ENV VERIFY_CHECKSUM=false
 RUN ./get_helm.sh
     
 CMD [""]
