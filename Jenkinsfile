@@ -16,11 +16,7 @@ pipeline {
     
     stages {
     
-        stage('package') {
-            steps {
-                sh 'mvn package'
-            }    
-        }
+       
         
       
         stage('Docker Build image') {
@@ -38,7 +34,7 @@ pipeline {
                
                 sh 'echo $PASSWORD | docker login 172.31.17.39:9001 -u $USERNAME --password-stdin ' }
                
-                sh 'docker build -t 172.31.17.39:9001/$IMAGE:maven Dockerfile-maven'
+                sh 'docker build -t 172.31.17.39:9001/$IMAGE:maven .'
                 sh 'docker push 172.31.17.39:9001/$IMAGE:maven '
                 
                 sh 'docker logout'
