@@ -1,8 +1,6 @@
 FROM alpine
 
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y curl tar bash
+RUN apk add --no-cache curl tar bash
     
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl   
 RUN chmod u+x ./kubectl
