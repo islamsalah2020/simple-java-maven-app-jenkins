@@ -34,8 +34,8 @@ pipeline {
                
                 sh 'echo $PASSWORD | docker login 172.31.17.39:9001 -u $USERNAME --password-stdin ' }
                
-                sh 'docker build -t 172.31.17.39:9001/$IMAGE:sonar .'
-                sh 'docker push 172.31.17.39:9001/$IMAGE:sonar '
+                sh 'docker build -t 172.31.17.39:9001/$IMAGE:docker .'
+                sh 'docker push 172.31.17.39:9001/$IMAGE:docker '
                 
                 sh 'docker logout'
                 
