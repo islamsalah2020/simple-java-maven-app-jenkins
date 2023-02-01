@@ -65,8 +65,8 @@ pipeline {
                
                 sh 'echo $PASSWORD | docker login 172.31.17.39:9001 -u $USERNAME --password-stdin ' }
                
-                // sh 'docker pull 172.31.17.39:9001/$IMAGE:$TAG '
-                // sh 'docker run 172.31.17.39:9001/$IMAGE:$TAG '
+                 sh 'docker pull 172.31.17.39:9001/$IMAGE:$TAG '
+                 sh 'docker run 172.31.17.39:9001/$IMAGE:$TAG '
                 
                 
                 
