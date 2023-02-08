@@ -69,7 +69,7 @@ pipeline {
             }
         }
         
-       
+    }
        
             post{
 		always {
@@ -90,6 +90,6 @@ pipeline {
           
                     
                 
-            }
+            
         }
   
