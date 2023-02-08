@@ -71,7 +71,19 @@ pipeline {
         
        
        
-            
+            post{
+		always {
+			
+            emailext body: '''${SCRIPT, template="groovy-html.template"}''',
+			subject: 'Test Subject',
+			to: 'islam.salah@qeema.net'
+
+					
+
+        }
+
+	}
+
         
         
         
