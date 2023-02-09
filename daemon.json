@@ -2,7 +2,7 @@
     "insecure-registries" : [ "172.31.17.39:9001" ]
 }
 
-// /etc/docker/daemon.json
+// /etc/docker/daemon.json on server that have docker
 // ip of nexus server
 // port of image repo
 // docker run -d -p 8081:8081 -p 8082:8082 -p 9001:9001 -p 9002:9002 --restart always --name nexus3 -v nexus-data:/nexus-data sonatype/nexus3
